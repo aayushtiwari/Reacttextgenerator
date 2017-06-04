@@ -1,0 +1,20 @@
+module.exports={
+  entry:__dirname+"/src/index.js",
+output:{
+  path:__dirname+"/src",
+  filename:"bundle.js"
+},
+module:{
+  loaders:[
+      {
+        exclude:/(node_module)/,
+        loader:'babel-loader',
+        query:{
+          presets:['es2015','react']
+        }
+      }
+  ]
+},
+watch:true
+
+}
