@@ -8,20 +8,22 @@ class Text extends Component {
   constructor(props) {
     super(props);
     this.state={
-    paras:3,
+    paras:2,
     html:true,
     data:null,
-    },
-
-    axios.get(`http://hipsterjesus.com/api?paras=${this.state.paras}&html=${this.state.html}`).then(response=>{this.setState({data:response.data.text});
-console.log(response);
-  });
+    } 
+   this.search(this.state.paras,this.state.html);
   }
+search(paras,html){
+  axios.get(`http://hipsterjesus.com/api?paras=${paras}&html=${html}`).then(response=>{this.setState({data:response.data.text});
+    this.setState({paras,html});
+  });
 
+}
   render(){
     return <div>
     <div className="heading">ReactJs Sample Text Generator</div>
-      <Confi/>
+      <Confi setting={this.state} onParaChange={(paras,html)=>{this.search(paras,html)}}/>
       <Output res={this.state.data}/>
     </div>;
   }

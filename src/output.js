@@ -7,7 +7,7 @@ if(!res){
 else{
 return(
     <div className="output">
-     {res}
+     <h3>{res}</h3>
     </div>
   );}
 };
